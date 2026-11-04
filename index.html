@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tenzin Choden: Computer System and Network student at Jigme Namgyel Engineering College, Bhutan. Projects, skills and contact." />
+  <title>Tenzin Choden | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..800;1,9..144,400..700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    // Apply the saved theme before the page paints (prevents a flash).
+    document.documentElement.classList.add("js");
+    try {
+      var saved = localStorage.getItem("theme");
+      var dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.setAttribute("data-theme", saved || (dark ? "night" : "day"));
+    } catch (e) { document.documentElement.setAttribute("data-theme", "day"); }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#about">Skip to content</a>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header class="navbar" id="navbar">
+    <nav class="container nav-inner" aria-label="Main navigation">
+      <a href="#home" class="logo" aria-label="Tenzin Choden, home">
+        <span class="logo-flags" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+        <span class="logo-name">Tenzin <em>Choden</em></span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#education" class="nav-link">Education</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Switch to night mode">
+          <span class="sun" aria-hidden="true"></span>
+          <span class="moon" aria-hidden="true"></span>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ===================== HOME ===================== -->
+    <section id="home" class="hero">
+      <div class="stars" id="stars" aria-hidden="true"></div>
+      <div class="wind" id="wind" aria-hidden="true"></div>
+      <!-- Prayer flags (lungta): built by script.js -->
+      <div class="flags" id="flags" aria-hidden="true"></div>
+      <!-- Paper lungta tossed into the wind land here -->
+      <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <p class="greeting rise" style="--d:0">
+            <span class="greet-word">Hello, I'm</span><span class="greet-hand" aria-hidden="true">👋</span>
+          </p>
+          <!-- Each letter is wrapped by script.js so it can swing in like a flag on a string -->
+          <h1 class="hero-name" aria-label="Tenzin Choden">
+            <span class="name-line" data-swing>Tenzin</span>
+            <span class="name-line" data-swing><em>Choden</em><span class="name-dot">.</span></span>
+          </h1>
+          <p class="kicker rise" style="--d:2"><span class="kicker-dot"></span>Computer System &amp; Network student · JNEC, Bhutan</p>
+          <p class="hero-intro rise" style="--d:2">
+            I'm a second-year Computer System and Network student at Jigme Namgyel Engineering College.
+            I like understanding how things connect, from the routers that move packets to the
+            web apps and APIs that run on top of them.
+          </p>
+          <div class="hero-buttons rise" style="--d:3">
+            <a href="#projects" class="btn btn-solid">See my work <span aria-hidden="true">→</span></a>
+            <a href="#contact" class="btn btn-ghost">Say hello</a>
+          </div>
+          <ul class="socials rise" style="--d:4" aria-label="Social links">
+            <li><a href="https://github.com/Tenzin20039" target="_blank" rel="noopener">GitHub ↗</a></li>
+            <li><a href="https://www.linkedin.com/in/tenzin-choden-268636425/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+            <li><a href="mailto:tenzinchoden707@gmail.com">Email ↗</a></li>
+          </ul>
+          <button type="button" class="toss-btn rise" style="--d:5" id="tossBtn">
+            <span class="toss-icon" aria-hidden="true">🌬️</span>
+            <span>Toss lungta for luck</span>
+            <small>or tap anywhere in the sky</small>
+          </button>
+        </div>
+
+        <!-- Photo as a Bhutanese postage stamp -->
+        <div class="stamp-wrap rise" style="--d:2">
+          <figure class="stamp" id="stamp">
+            <div class="stamp-inner">
+              <img src="image/profile.jpg" alt="Photo of Tenzin Choden" width="1920" height="2560" />
+            </div>
+          </figure>
+          <div class="postmark" aria-hidden="true">
+            <svg viewBox="0 0 120 120">
+              <defs><path id="pm" d="M60 60 m-44 0 a44 44 0 1 1 88 0 a44 44 0 1 1 -88 0" /></defs>
+              <circle cx="60" cy="60" r="54" />
+              <circle cx="60" cy="60" r="34" />
+              <text><textPath href="#pm">JNEC · DEWATHANG · 2026 ·</textPath></text>
+              <text x="60" y="66" text-anchor="middle" class="pm-center">2nd YR</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- A bird gliding over the ridges -->
+      <svg class="bird" viewBox="0 0 40 16" aria-hidden="true"><path d="M2 10 Q10 2 20 9 Q30 2 38 10" /></svg>
+      <svg class="bird bird-2" viewBox="0 0 40 16" aria-hidden="true"><path d="M2 10 Q10 2 20 9 Q30 2 38 10" /></svg>
+
+      <a href="#about" class="scroll-cue" aria-label="Scroll to About">
+        <span>scroll</span><i aria-hidden="true"></i>
+      </a>
+
+      <!-- Himalayan ridgelines (parallax) -->
+      <div class="mountains" aria-hidden="true">
+        <svg class="m m3" viewBox="0 0 1440 260" preserveAspectRatio="none"><path d="M0 170 L90 120 L170 150 L260 80 L330 120 L420 60 L500 110 L590 70 L680 130 L760 90 L860 140 L950 70 L1040 120 L1130 60 L1220 110 L1320 80 L1440 130 L1440 460 L0 460Z"/></svg>
+        <svg class="m m2" viewBox="0 0 1440 260" preserveAspectRatio="none"><path d="M0 200 L110 150 L200 180 L310 120 L400 170 L520 110 L610 160 L720 130 L820 180 L930 120 L1030 170 L1150 130 L1250 175 L1350 140 L1440 170 L1440 460 L0 460Z"/></svg>
+        <svg class="m m1" viewBox="0 0 1440 260" preserveAspectRatio="none"><path d="M0 230 Q180 180 360 215 T720 205 T1080 220 T1440 200 L1440 460 L0 460Z"/></svg>
+      </div>
+    </section>
+
+    <!-- ===================== ABOUT ===================== -->
+    <section id="about" class="section">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="section-path"><i class="mini-flag"></i>01 · Who I am</span>
+          <h2>About me</h2>
+        </header>
+
+        <div class="about-grid">
+          <blockquote class="pull reveal">
+            “Every connection starts with a single <em>handshake</em>.”
+          </blockquote>
+          <div class="about-text reveal">
+            <p>Hello! I'm a <strong>Computer Systems and Networking</strong> student at <strong>Jigme Namgyel Engineering College</strong>, passionate about technology, networking, and web development.</p>
+            <p>I enjoy learning new technologies, solving technical problems, and developing practical skills through hands-on projects. My interests include computer networking, network security, system administration, and building websites using HTML, CSS, JavaScript, and Bootstrap.</p>
+            <p>Through my academic projects and practical work, I have gained experience in designing network topologies, configuring network devices, working with Linux and Windows servers, and developing responsive web applications.</p>
+            <p>I am always eager to learn, explore new technologies, and improve my technical skills. My goal is to become a <strong>skilled IT professional</strong> who can contribute to innovative projects and solve real-world technical challenges.</p>
+          </div>
+        </div>
+
+        <!-- Numbers are counted from the page itself by script.js, so they stay accurate -->
+        <ul class="stats">
+          <li class="stat reveal"><strong data-stat="projects">0</strong><span>projects on this page</span></li>
+          <li class="stat reveal"><strong data-stat="skills">0</strong><span>skills on the network map</span></li>
+          <li class="stat reveal"><strong>2<sup>nd</sup></strong><span>year at JNEC</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================== SKILLS ===================== -->
+    <section id="skills" class="section section-tint">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="section-path"><i class="mini-flag"></i>02 · What I know</span>
+          <h2>My skill network</h2>
+          <p class="section-sub">Each colour is a prayer-flag colour. Hover or tap a node to trace the route and see where I've used that skill.</p>
+        </header>
+
+        <div class="topology-wrap reveal">
+          <svg class="topology" id="topology" viewBox="0 0 800 520" role="group" aria-label="Network map of skills"></svg>
+          <!-- Phones only: the map is too small to read there, so skills show as tappable tags -->
+          <ul class="skill-chips" id="skillChips" aria-label="Skills"></ul>
+          <aside class="node-info" id="nodeInfo" aria-live="polite">
+            <span class="node-info-label">skill map</span>
+            <h3>Pick a node</h3>
+            <p>Packets travel from me to each skill group, then out to individual skills.</p>
+          </aside>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== PROJECTS ===================== -->
+    <section id="projects" class="section">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="section-path"><i class="mini-flag"></i>03 · What I have built</span>
+          <h2>Things I've built</h2>
+        </header>
+
+        <div class="filters reveal" role="group" aria-label="Filter projects">
+          <button class="filter active" data-filter="all">All</button>
+          <button class="filter" data-filter="frontend">Frontend</button>
+          <button class="filter" data-filter="backend">Backend</button>
+        </div>
+
+        <div class="packets">
+          <article class="packet reveal" data-type="frontend" style="--flag: var(--blue)">
+            <header class="packet-head">
+              <span>Project 01</span><span class="packet-src">events_hub</span><span class="packet-proto">Website</span>
+            </header>
+            <div class="packet-body">
+              <h3>JNEC Events Hub</h3>
+              <p>A web platform that helps JNEC students explore college events, view schedules, register for activities and stay updated on what's coming up. It has separate pages for events, a gallery, registration and contact.</p>
+              <ul class="tech"><li>HTML</li><li>CSS</li><li>Multi-page site</li></ul>
+              <div class="packet-links">
+                <a href="https://github.com/Tenzin20039/events_hub" target="_blank" rel="noopener">Source code ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="packet reveal" data-type="backend" style="--flag: var(--red)">
+            <header class="packet-head">
+              <span>Project 02</span><span class="packet-src">API-Task</span><span class="packet-proto">REST API</span>
+            </header>
+            <div class="packet-body">
+              <h3>Task List API (SYD204)</h3>
+              <p>A REST API for managing tasks, built with Node.js and Express on a MySQL database hosted on Aiven Cloud. A small browser front end lets users add, tick off, rename, delete and filter tasks. I built it in three stages: in-memory, single-file MySQL, and a final MVC version with validation and parameterised queries.</p>
+              <ul class="tech"><li>Node.js</li><li>Express</li><li>MySQL (Aiven)</li><li>HTML/CSS/JS</li></ul>
+              <div class="packet-links">
+                <a href="https://github.com/Tenzin20039/API-Task" target="_blank" rel="noopener">Source code ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="packet reveal" data-type="frontend" style="--flag: var(--green)">
+            <header class="packet-head">
+              <span>Project 03</span><span class="packet-src">student_portfolio</span><span class="packet-proto">Live site</span>
+            </header>
+            <div class="packet-body">
+              <h3>Student Portfolio (v1)</h3>
+              <p>My earlier portfolio website, built with HTML and deployed on Vercel. It was my first experience taking a site from code to a live public URL.</p>
+              <ul class="tech"><li>HTML</li><li>CSS</li><li>Vercel</li></ul>
+              <div class="packet-links">
+                <a href="https://student-portfolio-lovat.vercel.app" target="_blank" rel="noopener">Live site ↗</a>
+                <a href="https://github.com/Tenzin20039/student_portfolio" target="_blank" rel="noopener">Source code ↗</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== EDUCATION ===================== -->
+    <section id="education" class="section section-tint">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="section-path"><i class="mini-flag"></i>04 · Where I learn</span>
+          <h2>My learning trail</h2>
+        </header>
+
+        <div class="trace reveal" id="trace">
+          <p class="trace-cmd">Every step is a stop on the trail, and the path draws itself as you scroll.</p>
+          <div class="hops-wrap">
+          <div class="trail" aria-hidden="true"><div class="trail-fill" id="trailFill"></div><span class="hiker" id="hiker">🚶‍♀️</span></div>
+          <ol class="hops">
+            <li class="hop">
+              <span class="hop-n">1</span>
+              <div class="hop-main">
+                <h3>Baylling Central School</h3>
+                <p>Higher Secondary (Class XII), Commerce</p>
+              </div>
+              <span class="hop-time">[2022] – [2023]</span>
+            </li>
+            <li class="hop">
+              <span class="hop-n">2</span>
+              <div class="hop-main">
+                <h3>Jigme Namgyel Engineering College (JNEC)</h3>
+                <p>Computer System and Network · currently in 2nd year</p>
+              </div>
+              <span class="hop-time">2025 – present</span>
+            </li>
+            <li class="hop hop-next">
+              <span class="hop-n">3</span>
+              <div class="hop-main">
+                <h3>The next peak ⛰️</h3>
+                <p>Still climbing<span class="dots"><i>.</i><i>.</i><i>.</i></span></p>
+              </div>
+              <span class="hop-time">coming soon</span>
+            </li>
+          </ol>
+          </div>
+        </div>
+
+        <h3 class="certs-title reveal">Certifications &amp; achievements</h3>
+        <!-- Add one .cert per certificate. Links go to Coursera's official verification page. -->
+        <ul class="certs">
+          <li class="cert reveal">
+            <span class="cert-seal" aria-hidden="true">✦</span>
+            <div>
+              <h4>Becoming a Linux Server Admin</h4>
+              <p>Packt · Coursera · Sep 2026</p>
+              <a class="cert-link" href="https://coursera.org/verify/195QZ9MNO9WH" target="_blank" rel="noopener">Verify certificate ↗</a>
+            </div>
+          </li>
+          <li class="cert reveal">
+            <span class="cert-seal" aria-hidden="true">✦</span>
+            <div>
+              <h4>Master Full-Stack Web Development with Laravel &amp; PHP</h4>
+              <p>Board Infinity · Coursera · Sep 2026</p>
+              <a class="cert-link" href="https://coursera.org/verify/HD78OV5VOAGA" target="_blank" rel="noopener">Verify certificate ↗</a>
+            </div>
+          </li>
+          <li class="cert reveal">
+            <span class="cert-seal" aria-hidden="true">✦</span>
+            <div>
+              <h4>Python Tkinter: Design, Build &amp; Integrate GUIs</h4>
+              <p>EDUCBA · Coursera · Sep 2026</p>
+              <a class="cert-link" href="https://coursera.org/verify/T2R9HNV8A841" target="_blank" rel="noopener">Verify certificate ↗</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+    <section id="contact" class="section">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="section-path"><i class="mini-flag"></i>05 · Get in touch</span>
+          <h2>Write me a postcard</h2>
+        </header>
+
+        <div class="contact-grid">
+          <div class="contact-info reveal">
+            <p>Have a question, an internship opportunity or an idea to build together? Write it on the postcard and send it. Your email app will open with everything ready to go.</p>
+            <dl class="contact-list">
+              <div><dt>Email</dt><dd><a href="mailto:tenzinchoden707@gmail.com">tenzinchoden707@gmail.com</a></dd></div>
+              <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/tenzin-choden-268636425/" target="_blank" rel="noopener">tenzin-choden</a></dd></div>
+              <div><dt>GitHub</dt><dd><a href="https://github.com/Tenzin20039" target="_blank" rel="noopener">Tenzin20039</a></dd></div>
+              <div><dt>Location</dt><dd>JNEC, Dewathang, Bhutan</dd></div>
+            </dl>
+          </div>
+
+          <div class="postcard-stage reveal">
+            <form class="packet-form postcard" id="contactForm" novalidate data-email="tenzinchoden707@gmail.com">
+              <div class="form-head">
+                <div>
+                  <span class="pc-title">Postcard</span>
+                  <span class="pc-to">To: Tenzin Choden, JNEC</span>
+                </div>
+                <span class="pc-stamp" aria-hidden="true"><img src="image/profile.jpg" alt="" /></span>
+              </div>
+              <div class="field">
+                <label for="name">Your name</label>
+                <input id="name" name="name" type="text" autocomplete="name" required />
+                <small class="error" aria-live="polite"></small>
+              </div>
+              <div class="field">
+                <label for="email">Your email</label>
+                <input id="email" name="email" type="email" autocomplete="email" required />
+                <small class="error" aria-live="polite"></small>
+              </div>
+              <div class="field">
+                <label for="message">Your message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+                <small class="error" aria-live="polite"></small>
+              </div>
+              <div class="transmit-row">
+                <button type="submit" class="btn btn-solid" id="sendBtn">Send postcard <span aria-hidden="true">✉</span></button>
+              </div>
+              <p class="form-status" id="formStatus" role="status"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="mini-flags" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Tenzin Choden · Hand-built with HTML, CSS &amp; JavaScript.</p>
+      <a href="#home">back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
