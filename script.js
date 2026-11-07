@@ -374,6 +374,8 @@ window.addEventListener("resize", () => {
 
 /* ---------- Scroll reveal + live stats ---------- */
 document.querySelectorAll(".hop").forEach((h, i) => h.style.setProperty("--i", i));
+// Postmarks land one after another along each row of stamps
+document.querySelectorAll(".cert").forEach((c, i) => c.style.setProperty("--n", i % 4));
 
 const STATS = {
   projects: document.querySelectorAll(".packet").length,

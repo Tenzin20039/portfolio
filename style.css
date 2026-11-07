@@ -763,33 +763,143 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .js .hop { opacity: 0; transform: translateX(-16px); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); transition-delay: calc(var(--i) * 450ms + 300ms); }
 .js .trace.in .hop { opacity: 1; transform: none; }
 
-.certs-title { font-family: var(--serif); font-size: 1.5rem; margin: 3rem 0 1.2rem; }
-.certs { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.2rem; }
-.cert {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1.1rem 1.3rem;
-  border: 1.5px dashed var(--ink-soft);
-  border-radius: 12px;
-  background: var(--card);
+.certs-title { font-family: var(--serif); font-size: 1.6rem; margin: 3.5rem 0 0.3rem; }
+.certs-sub { color: var(--ink-soft); margin-bottom: 1.8rem; }
+
+/* Certificates as a stamp collection */
+.certs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 2.2rem 1.8rem;
+  padding: 2rem clamp(1rem, 3vw, 2rem);
+  border-radius: 16px;
+  border: 1.5px solid var(--line);
+  /* album page: faint ruled grid */
+  background:
+    linear-gradient(var(--line) 1px, transparent 1px) 0 0 / 100% 28px,
+    var(--card);
+  background-blend-mode: normal;
 }
-.cert-seal {
+[data-theme="night"] .certs { background: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px) 0 0 / 100% 28px, var(--card); }
+
+.cert { filter: drop-shadow(4px 6px 0 rgba(29, 26, 22, 0.16)); }
+[data-theme="night"] .cert { filter: drop-shadow(4px 6px 0 rgba(0, 0, 0, 0.45)); }
+.cert:nth-child(4n + 1) { --tilt: -2.5deg; }
+.cert:nth-child(4n + 2) { --tilt: 1.8deg; }
+.cert:nth-child(4n + 3) { --tilt: -1deg; }
+.cert:nth-child(4n + 4) { --tilt: 2.4deg; }
+
+.cert-stamp {
+  --hole: 5px;
+  position: relative;
+  display: block;
+  height: 100%;
+  padding: 12px;
+  background: var(--white);
+  color: var(--ink);
+  text-decoration: none;
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform 0.45s var(--ease);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    radial-gradient(circle var(--hole) at 50% 50%, transparent 96%, #000) -8px -8px / 16px 16px round;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    radial-gradient(circle var(--hole) at 50% 50%, transparent 96%, #000) -8px -8px / 16px 16px round;
+}
+[data-theme="night"] .cert-stamp { background: #e9e4d6; color: #1d1a16; }
+.cert-stamp:hover,
+.cert-stamp:focus-visible { transform: rotate(0deg) translateY(-8px) scale(1.04); }
+
+.cert-face {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1.5px solid #1d1a16;
+  background:
+    radial-gradient(circle at 85% 15%, color-mix(in srgb, var(--flag) 22%, transparent), transparent 55%),
+    color-mix(in srgb, var(--flag) 10%, #fbf6ea);
+  overflow: hidden;
+}
+
+/* Big emblem band at the top of each stamp */
+.cert-emblem {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.9rem 0.9rem 0.7rem;
+  background: var(--flag);
+  color: #fff;
+  font-family: var(--serif);
+  font-weight: 800;
+  font-size: 2.1rem;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  font-variation-settings: "opsz" 144;
+}
+.cert-emblem small { font-family: var(--mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; opacity: 0.9; }
+.cert[style*="--yellow"] .cert-emblem,
+.cert[style*="--white"] .cert-emblem { color: #1d1a16; }
+/* engraved lines across the emblem band */
+.cert-emblem::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0 2px, transparent 2px 7px);
+  pointer-events: none;
+}
+
+.cert-body { display: flex; flex-direction: column; gap: 0.35rem; flex: 1; padding: 0.9rem 0.9rem 1rem; }
+.cert-body h4 { font-family: var(--serif); font-size: 1.05rem; line-height: 1.25; font-weight: 650; }
+.cert-issuer { font-family: var(--mono); font-size: 0.72rem; color: #5d554a; }
+.cert-cta {
+  margin-top: auto;
+  padding-top: 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #9b2226;
+  padding-right: 70px; /* leave room for the postmark */
+  min-height: 3.2em;
+  display: flex;
+  align-items: flex-end;
+}
+.cert-stamp:hover .cert-cta { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Round postmark that thunks onto the stamp when it scrolls into view */
+.cert-postmark {
+  position: absolute;
+  bottom: 16px;
+  right: 14px;
   display: grid;
   place-items: center;
-  flex: none;
-  width: 46px; height: 46px;
+  align-content: center;
+  width: 66px;
+  height: 66px;
+  border: 2.5px double color-mix(in srgb, #9b2226 75%, transparent);
   border-radius: 50%;
-  border: 2px solid var(--maroon);
-  color: var(--maroon);
-  font-size: 1.2rem;
-  transition: transform 0.6s var(--ease);
+  color: color-mix(in srgb, #9b2226 80%, transparent);
+  font-family: var(--mono);
+  font-size: 0.56rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.1;
+  text-align: center;
+  transform: rotate(-16deg);
+  pointer-events: none;
+  mix-blend-mode: multiply;
 }
-.cert:hover .cert-seal { transform: rotate(180deg) scale(1.1); }
-.cert h4 { font-size: 1rem; }
-.cert p { font-family: var(--mono); font-size: 0.8rem; color: var(--ink-soft); }
-.cert-link { display: inline-block; margin-top: 0.3rem; font-family: var(--mono); font-size: 0.8rem; font-weight: 600; color: var(--maroon); text-decoration: none; border-bottom: 2px solid currentColor; }
-.cert-link:hover { color: var(--blue); }
+.cert-postmark b { display: block; font-size: 1.25rem; font-family: var(--serif); letter-spacing: 0; }
+.js .cert .cert-postmark { opacity: 0; }
+.js .cert.in .cert-postmark { animation: thunk 0.5s var(--ease) forwards; animation-delay: calc(var(--n, 0) * 160ms + 450ms); }
+@keyframes thunk {
+  0% { opacity: 0; transform: rotate(-16deg) scale(2.2); }
+  60% { opacity: 1; transform: rotate(-16deg) scale(0.92); }
+  100% { opacity: 1; transform: rotate(-16deg) scale(1); }
+}
+.cert-stamp:hover .cert-postmark { animation: none; opacity: 1; transform: rotate(-4deg) scale(1.05); transition: transform 0.4s var(--ease); }
 
 /* =========================================================
    Contact
@@ -906,7 +1016,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
-  .js .rise, .js .reveal, .js .hop, .js .swing-char, .js .name-dot { opacity: 1; transform: none; }
+  .js .rise, .js .reveal, .js .hop, .js .swing-char, .js .name-dot, .js .cert .cert-postmark { opacity: 1; transform: none; }
   .wind, .bird { display: none; }
 }
 
